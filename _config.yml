@@ -23,7 +23,7 @@ repository               : "shankram/shankram.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "website pfp.jpg"
   name             : "Shankar Ram"
   pronouns         : "he/him"
   bio              : "Beginnings are such delicate times"
