@@ -1,6 +1,6 @@
 ---
 title: "To ken izers"
-date: 2025-29-09
+date: 2025-09-29
 tags:
   - NLP
   - LLM
