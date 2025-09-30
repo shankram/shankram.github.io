@@ -5,7 +5,8 @@ draft: false
 toc: false
 mathjax: true
 tags:
-  - NLP, LLM
+  - NLP
+  - LLM
 ---
 # An overview of commonly used tokenizers
 
