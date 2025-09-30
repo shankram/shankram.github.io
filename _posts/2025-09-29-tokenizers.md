@@ -1,8 +1,6 @@
 ---
 title: "To ken izers"
 date: 2025-29-09
-draft: false
-toc: false
 mathjax: true
 tags:
   - NLP
