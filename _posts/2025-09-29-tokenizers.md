@@ -5,7 +5,7 @@ tags:
   - NLP
   - LLM
 ---
-# An overview of commonly used tokenizers
+An overview of commonly used tokenizers
 
 Langauge models have taken the world by storm, thanks to transformers ([Vaswani et al.](https://arxiv.org/abs/1706.03762)). A fundamental question when modeling language is how to convert words into numerical representations that computers can understand. One obvious way is to think of each unique word as a one-hot encoded vector of dimension equal to the size of our vocabulary. This is a bit of a problem since there are over 150,000 words in the english language! Surely we can do better than assigning a unique vector to each word in our vocabulary. Behold, tokenizers. Tokenizers are basically algorithms that help prepare a vocabulary for language models (hopefully one that is smaller than the set of unique words in the corpus). Let's jump right into different tokenizers that are commonly used today.
 
@@ -51,6 +51,6 @@ A Unigram language model is a model that assumes each token to be independent of
 
 In each iteration of the algorithm, we find the token whose removal would lead to the smallest increase in the loss. We stop when we reach the desired vocabulary size. Given a new word, its tokenization is the one corresponding to the best probability under the vocabulary, i.e., $\underset{\tau}{\text{argmax}} \prod_{t \in \tau}P(t)$.
 
-In practice, the [_Viterbi algorithm_](https://en.wikipedia.org/wiki/Viterbi_algorithm) is used to find the compute the loss. We will look at a simple DP algorithm the find the best tokenization of a word here. Given a word $w$, we get that $$L(w[:i]) = \min_{sfx \in V} \left\{L(w[:i-j]) \cdot P(sfx) \right\} $$ where $sfx$ is all possible suffixes of $w[:i]$ in the vocabulary and $j$ is the length of the corresponding suffix. Memoization of this gives us the DP algorithm. This can be implemented efficiently using a _trie_ data structure. We will not be looking at how the tokens to be removed are chosen at each iteration since it is out of the scope of this blog post.
+In practice, the [_Viterbi algorithm_](https://en.wikipedia.org/wiki/Viterbi_algorithm) is used to find the compute the loss. We will look at a simple DP algorithm the find the best tokenization of a word here. Given a word $w$, we get that $$L(w[:i]) = \max_{sfx \in V} \left\{L(w[:i-j]) \cdot P(sfx) \right\} $$ where $sfx$ is all possible suffixes of $w[:i]$ in the vocabulary and $j$ is the length of the corresponding suffix. Memoization of this gives us the DP algorithm. This can be implemented efficiently using a _trie_ data structure. We will not be looking at how the tokens to be removed are chosen at each iteration since it is out of the scope of this blog post.
 
 A naive implementation of all these tokenizers in python [can be found here](https://github.com/shankram/LLMs-from-scratch/blob/main/Tokenizers/Tokenizers.ipynb).
